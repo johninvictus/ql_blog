@@ -19,6 +19,13 @@ defmodule QlBlogWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/" do
+    pipe_through :api
+
+    forward("/api", Absinthe.Plug, schema: QlBlogWeb.Schema)
+    forward "/graphql", Absinthe.Plug.GraphiQL, schema: QlBlogWeb.Schema
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", QlBlogWeb do
   #   pipe_through :api
