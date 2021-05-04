@@ -20,7 +20,7 @@ defmodule QlBlog.MixProject do
   def application do
     [
       mod: {QlBlog.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ex_machina]
     ]
   end
 
@@ -46,7 +46,8 @@ defmodule QlBlog.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:absinthe, "~> 1.6"},
-      {:absinthe_plug, "~> 1.5"}
+      {:absinthe_plug, "~> 1.5"},
+      {:ex_machina, "~> 2.7.0", only: :test}
     ]
   end
 
