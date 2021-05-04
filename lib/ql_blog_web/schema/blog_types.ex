@@ -9,10 +9,16 @@ defmodule QlBlogWeb.Schema.BlogTypes do
     field :content, :string
   end
 
+  @desc "will be returned after mutation"
+  object :article_result do
+    field :errors, list_of(:error)
+    field :article, :article
+  end
+
   @desc "fields required to create a blog/article post"
   input_object :article_input do
     # mirror the database field, this will make your life easy, no need to change them to fit the database
-    field :title, non_null(:string)
+    field :title, :string
     field :content, non_null(:string)
   end
 
@@ -25,7 +31,7 @@ defmodule QlBlogWeb.Schema.BlogTypes do
 
   object :blog_mutations do
     @desc "create a new article"
-    field :create_article, :article do
+    field :create_article, :article_result do
       arg(:input, non_null(:article_input))
       resolve(&Resolvers.BlogResolver.create_article/3)
     end

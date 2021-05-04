@@ -7,7 +7,7 @@ defmodule QlBlogWeb.Resolvers.BlogResolver do
 
   def create_article(_parent, %{input: params}, _context) do
     with {:ok, article} <- Blog.create_article(params) do
-      {:ok, article}
+      {:ok, %{article: article}}
     end
   end
 end
