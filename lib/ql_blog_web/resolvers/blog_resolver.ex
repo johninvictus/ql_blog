@@ -10,4 +10,14 @@ defmodule QlBlogWeb.Resolvers.BlogResolver do
       {:ok, %{article: article}}
     end
   end
+
+  def delete_article(_parent, %{article_id: article_id}, _context) do
+    with %Blog.Article{} = article <- Blog.get_article(article_id),
+         {:ok, d_article} <- Blog.delete_article(article) do
+      {:ok, %{article: d_article}}
+    else
+      nil -> {:error, "Article not available"}
+      error -> error
+    end
+  end
 end

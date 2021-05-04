@@ -37,6 +37,8 @@ defmodule QlBlog.Blog do
   """
   def get_article!(id), do: Repo.get!(Article, id)
 
+  def get_article(id), do: Repo.get(Article, id)
+
   @doc """
   Creates a article.
 

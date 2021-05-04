@@ -35,5 +35,10 @@ defmodule QlBlogWeb.Schema.BlogTypes do
       arg(:input, non_null(:article_input))
       resolve(&Resolvers.BlogResolver.create_article/3)
     end
+
+    field :delete_article, :article_result do
+      arg(:article_id, non_null(:id))
+      resolve(&Resolvers.BlogResolver.delete_article/3)
+    end
   end
 end
