@@ -1,4 +1,4 @@
-defmodule QlBlogWeb.Schema.Queries.CreateArticleTest do
+defmodule QlBlogWeb.Schema.Mutations.CreateArticleTest do
   use QlBlogWeb.ConnCase, async: true
 
   @query """

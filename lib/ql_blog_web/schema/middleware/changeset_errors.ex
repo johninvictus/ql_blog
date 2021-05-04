@@ -18,6 +18,12 @@ defmodule QlBlogWeb.Schema.Middleware.ChangesetErrors do
     %{res | value: %{errors: errors}, errors: []}
   end
 
+  # will use this when error is string or atom
+  @doc false
+  defp parse_error(%{errors: [error]} = res) when is_binary(error) or is_atom(error) do
+    %{res | value: %{errors: [%{key: "error", message: error}]}, errors: []}
+  end
+
   defp parse_error(res), do: res
 
   defp transform_errors(changeset) do
