@@ -10,6 +10,7 @@ defmodule QlBlogWeb.Schema do
   import_types(Absinthe.Type.Custom)
   import_types(__MODULE__.ErrorTypes)
   import_types(__MODULE__.BlogTypes)
+  import_types(__MODULE__.AccountTypes)
 
   def middleware(middleware, _field, %{identifier: :mutation}) do
     middleware ++ [Middleware.ChangesetErrors]
@@ -21,16 +22,18 @@ defmodule QlBlogWeb.Schema do
 
   query do
     field :hello, :string do
-      resolve(fn _, _, _ ->
+      resolve(fn _parent, _args, _context ->
         {:ok, "Hello, world"}
       end)
     end
 
     import_fields(:blog_queries)
+    import_fields(:account_queries)
   end
 
   mutation do
     import_fields(:blog_mutations)
+    import_fields(:account_mutations)
   end
 
   subscription do
