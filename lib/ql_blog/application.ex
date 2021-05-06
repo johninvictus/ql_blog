@@ -14,7 +14,8 @@ defmodule QlBlog.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: QlBlog.PubSub},
       # Start the Endpoint (http/https)
-      QlBlogWeb.Endpoint
+      QlBlogWeb.Endpoint,
+      {Absinthe.Subscription, QlBlogWeb.Endpoint}
       # Start a worker by calling: QlBlog.Worker.start_link(arg)
       # {QlBlog.Worker, arg}
     ]

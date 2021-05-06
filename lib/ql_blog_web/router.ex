@@ -23,7 +23,10 @@ defmodule QlBlogWeb.Router do
     pipe_through :api
 
     forward("/api", Absinthe.Plug, schema: QlBlogWeb.Schema)
-    forward "/graphql", Absinthe.Plug.GraphiQL, schema: QlBlogWeb.Schema
+
+    forward "/graphql", Absinthe.Plug.GraphiQL,
+      schema: QlBlogWeb.Schema,
+      socket: QlBlogWeb.UserSocket
   end
 
   # Other scopes may use custom stacks.

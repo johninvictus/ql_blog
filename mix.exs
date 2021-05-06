@@ -47,6 +47,7 @@ defmodule QlBlog.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:absinthe, "~> 1.6"},
       {:absinthe_plug, "~> 1.5"},
+      {:absinthe_phoenix, "~> 2.0"},
       {:ex_machina, "~> 2.7.0"}
     ]
   end

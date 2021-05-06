@@ -1,6 +1,9 @@
 defmodule QlBlogWeb.UserSocket do
   use Phoenix.Socket
 
+  use Absinthe.Phoenix.Socket,
+    schema: QlBlogWeb.Schema
+
   ## Channels
   # channel "room:*", QlBlogWeb.RoomChannel
 
