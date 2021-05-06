@@ -15,7 +15,7 @@ defmodule QlBlogWeb.Schema.Mutations.DeleteArticleTest do
   }
   """
   setup do
-    {:ok, %{article: insert(:article)}}
+    {:ok, %{article: article_fixture()}}
   end
 
   test "delete_article - valid inputs", %{article: article} do

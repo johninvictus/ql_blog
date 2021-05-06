@@ -7,17 +7,13 @@ defmodule QlBlog.AccountTest do
     alias QlBlog.Account.User
 
     @valid_attrs %{age: 42, is_admin: true, name: "some name", user_type: "some user_type"}
-    @update_attrs %{age: 43, is_admin: false, name: "some updated name", user_type: "some updated user_type"}
+    @update_attrs %{
+      age: 43,
+      is_admin: false,
+      name: "some updated name",
+      user_type: "some updated user_type"
+    }
     @invalid_attrs %{age: nil, is_admin: nil, name: nil, user_type: nil}
-
-    def user_fixture(attrs \\ %{}) do
-      {:ok, user} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Account.create_user()
-
-      user
-    end
 
     test "list_users/0 returns all users" do
       user = user_fixture()

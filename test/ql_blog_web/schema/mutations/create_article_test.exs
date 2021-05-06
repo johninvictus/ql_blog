@@ -15,10 +15,13 @@ defmodule QlBlogWeb.Schema.Mutations.CreateArticleTest do
   }
   """
   test "create_article - valid inputs" do
+    user = user_fixture()
+
     variables = %{
       "input" => %{
         "content" => "Appear weak when you are strong, and strong when you are weak.",
-        "title" => "war games"
+        "title" => "war games",
+        "user_id" => user.id
       }
     }
 
@@ -37,9 +40,12 @@ defmodule QlBlogWeb.Schema.Mutations.CreateArticleTest do
 
   test "create_article - invalid inputs" do
     # made title non null so that we can test error, demo
+    user = user_fixture()
+
     variables = %{
       "input" => %{
-        "content" => "Appear weak when you are strong, and strong when you are weak."
+        "content" => "Appear weak when you are strong, and strong when you are weak.",
+        "user_id" => user.id
       }
     }
 

@@ -20,6 +20,7 @@ defmodule QlBlogWeb.Schema.BlogTypes do
     # mirror the database field, this will make your life easy, no need to change them to fit the database
     field :title, :string
     field :content, non_null(:string)
+    field :user_id, non_null(:integer)
   end
 
   object :blog_queries do

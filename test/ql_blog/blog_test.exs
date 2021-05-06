@@ -10,15 +10,6 @@ defmodule QlBlog.BlogTest do
     @update_attrs %{content: "some updated content", title: "some updated title"}
     @invalid_attrs %{content: nil, title: nil}
 
-    def article_fixture(attrs \\ %{}) do
-      {:ok, article} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Blog.create_article()
-
-      article
-    end
-
     test "list_articles/0 returns all articles" do
       article = article_fixture()
       assert Blog.list_articles() == [article]
@@ -30,9 +21,10 @@ defmodule QlBlog.BlogTest do
     end
 
     test "create_article/1 with valid data creates a article" do
-      assert {:ok, %Article{} = article} = Blog.create_article(@valid_attrs)
-      assert article.content == "some content"
-      assert article.title == "some title"
+      user = user_fixture()
+
+      assert {:ok, %Article{} = article} =
+               Blog.create_article(Map.put(@valid_attrs, :user_id, user.id))
     end
 
     test "create_article/1 with invalid data returns error changeset" do

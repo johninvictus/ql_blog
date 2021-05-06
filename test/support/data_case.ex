@@ -24,6 +24,7 @@ defmodule QlBlog.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import QlBlog.DataCase
+      import QlBlog.Factory
     end
   end
 

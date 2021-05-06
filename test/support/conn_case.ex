@@ -27,7 +27,6 @@ defmodule QlBlogWeb.ConnCase do
       alias QlBlogWeb.Router.Helpers, as: Routes
 
       import QlBlog.Factory
-
       # The default endpoint for testing
       @endpoint QlBlogWeb.Endpoint
     end

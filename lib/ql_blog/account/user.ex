@@ -2,11 +2,15 @@ defmodule QlBlog.Account.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias QlBlog.Blog.Article
+
   schema "users" do
     field :name, :string
     field :age, :integer
     field :is_admin, :boolean, default: false
     field :user_type, :string
+
+    has_many(:articles, Article)
 
     timestamps()
   end

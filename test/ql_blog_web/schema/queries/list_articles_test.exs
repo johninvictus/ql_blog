@@ -9,7 +9,7 @@ defmodule QlBlogWeb.Schema.Queries.ListArticlesTest do
     }
   """
   test "list all articles" do
-    article = insert(:article)
+    article = article_fixture()
 
     conn =
       build_conn()
