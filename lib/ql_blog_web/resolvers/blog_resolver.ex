@@ -5,6 +5,10 @@ defmodule QlBlogWeb.Resolvers.BlogResolver do
     {:ok, Blog.list_articles()}
   end
 
+  def article(_parent, %{article_id: article_id}, _context) do
+    {:ok, Blog.get_article(article_id)}
+  end
+
   def create_article(_parent, %{input: params}, _context) do
     with {:ok, article} <- Blog.create_article(params) do
       {:ok, %{article: article}}

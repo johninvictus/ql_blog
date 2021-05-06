@@ -27,6 +27,11 @@ defmodule QlBlogWeb.Schema.BlogTypes do
     field :list_articles, list_of(:article) do
       resolve(&Resolvers.BlogResolver.list_articles/3)
     end
+
+    field :article, :article do
+      arg(:article_id, non_null(:id))
+      resolve(&Resolvers.BlogResolver.article/3)
+    end
   end
 
   object :blog_mutations do
@@ -40,5 +45,8 @@ defmodule QlBlogWeb.Schema.BlogTypes do
       arg(:article_id, non_null(:id))
       resolve(&Resolvers.BlogResolver.delete_article/3)
     end
+  end
+
+  object :blog_subscriptions do
   end
 end
