@@ -1,5 +1,5 @@
 defmodule QlBlogWeb.Resolvers.BlogResolver do
-  alias QlBlog.Blog
+  alias QlBlog.{Blog, Repo}
 
   def list_articles(_parent, _args, _context) do
     {:ok, Blog.list_articles()}
@@ -15,6 +15,15 @@ defmodule QlBlogWeb.Resolvers.BlogResolver do
       Absinthe.Subscription.publish(QlBlogWeb.Endpoint, article, new_article: "*")
       {:ok, %{article: article}}
     end
+  end
+
+  def article_user(article, _params, _context) do
+    user =
+      article
+      |> Repo.preload(:user)
+      |> Map.get(:user)
+
+    {:ok, user}
   end
 
   def delete_article(_parent, %{article_id: article_id}, _context) do

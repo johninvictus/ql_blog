@@ -7,6 +7,10 @@ defmodule QlBlogWeb.Schema.BlogTypes do
     field :id, non_null(:id)
     field :title, :string
     field :content, :string
+
+    field :user, :user do
+      resolve(&Resolvers.BlogResolver.article_user/3)
+    end
   end
 
   @desc "will be returned after mutation"

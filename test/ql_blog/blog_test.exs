@@ -23,8 +23,7 @@ defmodule QlBlog.BlogTest do
     test "create_article/1 with valid data creates a article" do
       user = user_fixture()
 
-      assert {:ok, %Article{} = article} =
-               Blog.create_article(Map.put(@valid_attrs, :user_id, user.id))
+      assert {:ok, %Article{}} = Blog.create_article(Map.put(@valid_attrs, :user_id, user.id))
     end
 
     test "create_article/1 with invalid data returns error changeset" do
