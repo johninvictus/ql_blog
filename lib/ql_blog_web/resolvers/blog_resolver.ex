@@ -11,6 +11,8 @@ defmodule QlBlogWeb.Resolvers.BlogResolver do
 
   def create_article(_parent, %{input: params}, _context) do
     with {:ok, article} <- Blog.create_article(params) do
+      # trigger subscription
+      Absinthe.Subscription.publish(QlBlogWeb.Endpoint, article, new_article: "*")
       {:ok, %{article: article}}
     end
   end

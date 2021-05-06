@@ -48,5 +48,10 @@ defmodule QlBlogWeb.Schema.BlogTypes do
   end
 
   object :blog_subscriptions do
+    field :new_article, :article do
+      config(fn _args, _info ->
+        {:ok, topic: "*"}
+      end)
+    end
   end
 end

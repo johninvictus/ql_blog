@@ -32,4 +32,8 @@ defmodule QlBlogWeb.Schema do
   mutation do
     import_fields(:blog_mutations)
   end
+
+  subscription do
+    import_fields(:blog_subscriptions)
+  end
 end
